@@ -10,19 +10,25 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
+using Афиша_Событий.ViewModel;
 
-namespace Афиша_Событий
+namespace Афиша_Событий.View
 {
     /// <summary>
-    /// Логика взаимодействия для BookingPage.xaml
+    /// Логика взаимодействия для EmailWindow.xaml
     /// </summary>
-    public partial class BookingPage : Page
+    public partial class EmailWindow : Window
     {
-        public BookingPage()
+        public EmailWindow(TicketViewModel t)
         {
             InitializeComponent();
+            DataContext = new Users(t);
         }
+
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            this.DialogResult = true;
+        }        
     }
 }

@@ -1,0 +1,82 @@
+﻿<Page x:Class="Афиша_Событий.View.EventsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:Афиша_Событий.View"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="EventsPage">
+    
+    <Page.Resources>
+        <Style x:Key="CategoryItemStyle" TargetType="ListViewItem">
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ListViewItem">
+                    <Border x:Name="Bd"
+                            BorderBrush="{TemplateBinding BorderBrush}"
+                            BorderThickness="{TemplateBinding BorderThickness}"
+                            Background="{TemplateBinding Background}"
+                            Padding="{TemplateBinding Padding}"
+                            SnapsToDevicePixels="true">
+                        <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                            SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                            VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                    </Border>
+                    <ControlTemplate.Triggers>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="true"></Condition>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="Bd" Value="Pink"></Setter>
+                        </MultiTrigger>
+                        <MultiTrigger>
+                            <MultiTrigger.Conditions>
+                                <Condition Property="IsSelected" Value="false"></Condition>
+                                <Condition Property="IsMouseOver" Value="true"></Condition>
+                            </MultiTrigger.Conditions>
+                            <Setter Property="Background" TargetName="Bd" Value="#FFFFD5DB"></Setter>
+                        </MultiTrigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+
+    </Style>
+    </Page.Resources>
+    <Grid Background="#FFF7F2D1">
+        <StackPanel>
+        <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Path=AllEvents}" SelectedItem="{Binding Path=SelectEvent,Mode=TwoWay}" Background="{x:Null}" BorderBrush="{x:Null}" MouseDoubleClick="ListView_MouseDoubleClick"  ItemContainerStyle="{StaticResource CategoryItemStyle}">
+            <ListView.ItemsPanel>
+                <ItemsPanelTemplate>
+                    <WrapPanel Orientation="Horizontal"></WrapPanel>
+                </ItemsPanelTemplate>
+            </ListView.ItemsPanel>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="150"/>
+                            <ColumnDefinition/>
+                        </Grid.ColumnDefinitions>
+                        <Grid.ToolTip>
+                            <ToolTip Background="#FFF7F2D1">
+                                <ListView ItemsSource="{Binding Path=AllDates}" Background="#FFF7F2D1" BorderBrush="{x:Null}">
+                                    <ListView.ItemTemplate>
+                                        <DataTemplate>
+                                                <TextBlock Foreground="#FF5A2121" FontWeight="Bold" Text="{Binding Path=Date}"/>                                                                                       
+                                        </DataTemplate>
+                                    </ListView.ItemTemplate>
+                                </ListView>                                
+                            </ToolTip>
+                        </Grid.ToolTip>
+                        <Image Margin="5px" Height="200" Width="200" Source="{Binding Path=Image}" Grid.Column="0"/>                       
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+            <TextBlock Text="** для просмотра дат проведения наведите курсор на нужную афишу" FontSize="14" FontFamily="Calibri" FontStyle="Italic" HorizontalAlignment="Left" VerticalAlignment="Stretch"/>
+        </StackPanel>
+    </Grid>
+</Page>

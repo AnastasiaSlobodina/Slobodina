@@ -35,15 +35,30 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="MaterialDesignColors, Version=1.2.0.325, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignColors.1.2.0\lib\net45\MaterialDesignColors.dll</HintPath>
     </Reference>
     <Reference Include="MaterialDesignThemes.Wpf, Version=2.6.0.325, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\MaterialDesignThemes.2.6.0\lib\net45\MaterialDesignThemes.Wpf.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.Expression.Interactions, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\Microsoft.Expression.Interactions.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Runtime.Serialization" />
+    <Reference Include="System.Security" />
+    <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Windows.Interactivity.WPF.2.0.20525\lib\net40\System.Windows.Interactivity.dll</HintPath>
+    </Reference>
     <Reference Include="System.Xml" />
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Core" />
@@ -62,15 +77,46 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
-    <Page Include="BookingPage.xaml">
+    <Compile Include="Model\Admin.cs" />
+    <Compile Include="Model\Allocation.cs" />
+    <Compile Include="Model\Category.cs" />
+    <Compile Include="Model\City.cs" />
+    <Compile Include="Model\DateEvent.cs" />
+    <Compile Include="Model\Event.cs" />
+    <Compile Include="Model\Event_Type.cs" />
+    <Compile Include="Model\Model1.cs" />
+    <Compile Include="Model\Place.cs" />
+    <Compile Include="Model\Status.cs" />
+    <Compile Include="Model\sysdiagrams.cs" />
+    <Compile Include="Model\Ticket.cs" />
+    <Compile Include="Model\Type.cs" />
+    <Compile Include="Model\User.cs" />
+    <Compile Include="ViewModel\DateEventViewModel.cs" />
+    <Compile Include="ViewModel\TicketViewModel.cs" />
+    <Compile Include="ViewModel\Users.cs" />
+    <Compile Include="View\EmailWindow.xaml.cs">
+      <DependentUpon>EmailWindow.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\TicketsPage.xaml.cs">
+      <DependentUpon>TicketsPage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\Booking36565260Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="EventPage.xaml">
+    <Page Include="View\EmailWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="MainWindow.xaml">
+    <Page Include="View\EventsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\FullDescriptionPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -78,16 +124,30 @@
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Compile Include="BookingPage.xaml.cs">
-      <DependentUpon>BookingPage.xaml</DependentUpon>
+    <Compile Include="Help\Base.cs" />
+    <Compile Include="Help\RelayCommand.cs" />
+    <Compile Include="ViewModel\Events.cs" />
+    <Compile Include="ViewModel\EventViewModel.cs" />
+    <Compile Include="ViewModel\FullDescriptionEvents.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\Tickets.cs" />
+    <Compile Include="View\Booking36565260Page.xaml.cs">
+      <DependentUpon>Booking36565260Page.xaml</DependentUpon>
     </Compile>
-    <Compile Include="EventPage.xaml.cs">
-      <DependentUpon>EventPage.xaml</DependentUpon>
+    <Compile Include="View\EventsPage.xaml.cs">
+      <DependentUpon>EventsPage.xaml</DependentUpon>
     </Compile>
-    <Compile Include="MainWindow.xaml.cs">
+    <Compile Include="View\FullDescriptionPage.xaml.cs">
+      <DependentUpon>FullDescriptionPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="View\MainWindow.xaml.cs">
       <DependentUpon>MainWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
+    <Page Include="View\TicketsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs">
@@ -127,6 +187,55 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Картинки\Date.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Картинки\Мероприятия\10.JPG" />
+    <Resource Include="Картинки\Мероприятия\6.jpg" />
+    <Resource Include="Картинки\Мероприятия\7.JPG" />
+    <Resource Include="Картинки\Мероприятия\8.JPG" />
+    <Resource Include="Картинки\Мероприятия\9.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Картинки\Мероприятия\1.jpg" />
+    <Resource Include="Картинки\Мероприятия\2.jpg" />
+    <Resource Include="Картинки\Мероприятия\4.jpg" />
+    <Resource Include="Картинки\Мероприятия\5.jpg" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Картинки\Мероприятия\15.JPG" />
+    <Resource Include="Картинки\Мероприятия\16.JPG" />
+    <Resource Include="Картинки\Мероприятия\17.JPG" />
+    <Resource Include="Картинки\Мероприятия\19.JPG" />
+    <Resource Include="Картинки\Мероприятия\20.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Картинки\Мероприятия\21.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Картинки\Мероприятия\22.JPG" />
+    <Resource Include="Картинки\Мероприятия\23.JPG" />
+    <Resource Include="Картинки\Мероприятия\25.JPG" />
+    <Resource Include="Картинки\Мероприятия\26.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Картинки\Мероприятия\27.JPG" />
+    <Resource Include="Картинки\Мероприятия\28.JPG" />
+    <Resource Include="Картинки\Мероприятия\29.JPG" />
+    <Resource Include="Картинки\Мероприятия\30.JPG" />
+    <Resource Include="Картинки\Мероприятия\31.JPG" />
+    <Resource Include="Картинки\Мероприятия\32.JPG" />
+    <Resource Include="Картинки\Мероприятия\33.JPG" />
+    <Resource Include="Картинки\Мероприятия\34.JPG" />
+    <Resource Include="Картинки\Мероприятия\35.JPG" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Картинки\Статусы\Свободно.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Картинки\Статусы\Забронировано.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Картинки\Статусы\Продано.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

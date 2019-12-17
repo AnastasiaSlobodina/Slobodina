@@ -1,0 +1,33 @@
+﻿<Window x:Class="Афиша_Событий.View.EmailWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Афиша_Событий.View"
+        mc:Ignorable="d"
+        Title="Бронирование" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen">
+    <Window.Resources>
+        <Style TargetType="TextBlock" x:Key="BaseBlock">
+            <Setter Property="TextWrapping" Value="Wrap"></Setter>
+            <Setter Property="FontFamily" Value="Calibri"></Setter>
+            <Setter Property="Foreground" Value="#FF6F6171"></Setter>
+            <Setter Property="Margin" Value="5px"></Setter>
+        </Style>
+    </Window.Resources>
+    
+    <Grid Background="#FFFAE8CA" Margin="10px">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30" />
+            <RowDefinition Height="20" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
+
+        <TextBlock Style="{StaticResource BaseBlock}" HorizontalAlignment="Center" FontSize="20">Введите e-mail:</TextBlock>
+        <TextBox Name="passwordBox" Grid.Row="1" MinWidth="250" Text="{Binding Path=Identification, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBox>
+
+        <WrapPanel Grid.Row="2" HorizontalAlignment="Right" Margin="0,15,0,0">
+            <Button IsDefault="True" Command="{Binding Path=BookingCommand}" MinWidth="60" Margin="0,0,10,0" Click="Button_Click">OK</Button>
+            <Button IsCancel="True" MinWidth="60">Отмена</Button>
+        </WrapPanel>
+    </Grid>
+</Window>

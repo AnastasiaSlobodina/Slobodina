@@ -13,14 +13,14 @@ using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace Афиша_Событий
+namespace Афиша_Событий.View
 {
     /// <summary>
-    /// Логика взаимодействия для EventsPage.xaml
+    /// Логика взаимодействия для BookingPage.xaml
     /// </summary>
-    public partial class EventsPage : Page
+    public partial class BookingPage : Page
     {
-        public EventsPage()
+        public BookingPage()
         {
             InitializeComponent();
         }
