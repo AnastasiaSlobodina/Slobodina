@@ -54,6 +54,7 @@
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
+    <Reference Include="System.Messaging" />
     <Reference Include="System.Runtime.Serialization" />
     <Reference Include="System.Security" />
     <Reference Include="System.Windows.Interactivity, Version=4.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
@@ -91,15 +92,23 @@
     <Compile Include="Model\Ticket.cs" />
     <Compile Include="Model\Type.cs" />
     <Compile Include="Model\User.cs" />
+    <Compile Include="ViewModel\BiletViewModel.cs" />
     <Compile Include="ViewModel\DateEventViewModel.cs" />
     <Compile Include="ViewModel\TicketViewModel.cs" />
     <Compile Include="ViewModel\Users.cs" />
+    <Compile Include="View\Bilet.xaml.cs">
+      <DependentUpon>Bilet.xaml</DependentUpon>
+    </Compile>
     <Compile Include="View\EmailWindow.xaml.cs">
       <DependentUpon>EmailWindow.xaml</DependentUpon>
     </Compile>
     <Compile Include="View\TicketsPage.xaml.cs">
       <DependentUpon>TicketsPage.xaml</DependentUpon>
     </Compile>
+    <Page Include="View\Bilet.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="View\Booking36565260Page.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -236,6 +245,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Картинки\Статусы\Продано.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Картинки\Билет.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

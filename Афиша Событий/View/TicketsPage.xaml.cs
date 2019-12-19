@@ -33,7 +33,7 @@ namespace Афиша_Событий.View
 
         private void Booking_Click(object sender, RoutedEventArgs e)
         {
-            EmailWindow emailWindow = new EmailWindow(tickets.SelectTicket);
+            EmailWindow emailWindow = new EmailWindow(tickets.SelectTicket, tickets);
             emailWindow.ShowDialog();
         }
     }

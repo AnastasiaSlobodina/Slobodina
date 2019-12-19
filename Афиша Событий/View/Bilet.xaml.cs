@@ -16,19 +16,14 @@ using Афиша_Событий.ViewModel;
 namespace Афиша_Событий.View
 {
     /// <summary>
-    /// Логика взаимодействия для EmailWindow.xaml
+    /// Логика взаимодействия для Bilet.xaml
     /// </summary>
-    public partial class EmailWindow : Window
+    public partial class Bilet : Window
     {
-        public EmailWindow(TicketViewModel t, Tickets tickets)
+        public Bilet(Users tickets)
         {
             InitializeComponent();
-            DataContext = new Users(tickets);
+            DataContext = tickets;
         }
-
-        private void Button_Click(object sender, RoutedEventArgs e)
-        {
-            this.DialogResult = true;                   
-        }        
     }
 }

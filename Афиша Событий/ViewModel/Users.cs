@@ -2,21 +2,33 @@
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
 using System.Linq;
+using System.Messaging;
 using System.Text;
 using System.Threading.Tasks;
 using Афиша_Событий.Help;
 using Афиша_Событий.Model;
+using Афиша_Событий.View;
+using System.Threading;
 
 namespace Афиша_Событий.ViewModel
 {
     public class Users : Base
     {
         Model1 db;
-        Ticket ticket;
-        public Users(TicketViewModel t)
+        Tickets tickets;
+        private Ticket ticket;
+        private BiletViewModel bilet;
+        public BiletViewModel Bilet
+        {
+            get { return bilet; }
+            set { bilet = value; OnPropertyChanged("Bilet"); }
+        }
+        public Users(Tickets t)
         {
             db = new Model1();
-            ticket = db.Ticket.Find(t.Ticket_ID);
+            tickets = t;
+            ticket = db.Ticket.Find(t.SelectTicket.Ticket_ID);
+            Bilet = new BiletViewModel(ticket);
         }
 
         private string identification;
@@ -27,16 +39,17 @@ namespace Афиша_Событий.ViewModel
                 OnPropertyChanged("Identification");
             }
         }
-
-        //private User selectedUser;
-        //public ObservableCollection<User> Us { get; set; }
-        //public User SelectedUser
+        //private Tickets ti;
+        //public Tickets tickets
         //{
-        //    get { return selectedUser; }
+        //    get
+        //    {
+        //        return ti;
+        //    }
         //    set
         //    {
-        //        selectedUser = value;
-        //        OnPropertyChanged("SelectedUser");
+        //        ti = value;
+        //        OnPropertyChanged("tickets");
         //    }
         //}
 
@@ -54,6 +67,11 @@ namespace Афиша_Событий.ViewModel
                       tnew.Status_FK = 2;
                       tnew.User_FK = user.User_ID;
                       db.SaveChanges();
+                      var bilet = new Bilet(this);
+                      bilet.Show();
+                      Thread.Sleep(10000);
+                      bilet.Close();
+                      //tickets.AllTickets = db.Ticket.Where(i => i.DateEvent.DateEvent_ID == de.DateEvent_ID).ToList().Select(i => new TicketViewModel(i)).ToList();
                   },
                   
                 //условие, при котором будет доступна команда
