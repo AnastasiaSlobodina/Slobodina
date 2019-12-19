@@ -71,7 +71,7 @@ namespace Афиша_Событий.ViewModel
                       bilet.Show();
                       Thread.Sleep(10000);
                       bilet.Close();
-                      //tickets.AllTickets = db.Ticket.Where(i => i.DateEvent.DateEvent_ID == de.DateEvent_ID).ToList().Select(i => new TicketViewModel(i)).ToList();
+                      tickets.AllTickets = db.Ticket.Where(i => i.DateEvent.DateEvent_ID == tickets.ID).ToList().Select(i => new TicketViewModel(i)).ToList();
                   },
                   
                 //условие, при котором будет доступна команда

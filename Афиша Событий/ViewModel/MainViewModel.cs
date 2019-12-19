@@ -47,11 +47,11 @@ namespace Афиша_Событий.ViewModel
         }
 
 
-        private DateTime date = DateTime.Now;
-        public DateTime Date
+        private Nullable<DateTime> date = null;
+        public Nullable<DateTime> Date
         {
             get { return date; }
-            set { date = value; }
+            set { date = value; OnPropertyChanged("Date"); }
         }
 
         private RelayCommand reportEvents;

@@ -45,7 +45,9 @@
                         </ie:Interaction.Triggers>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Foreground="#FF6F6171" FontSize="16" FontFamily="Calibri" Text="{Binding Path=Date}"/>
+                                <Border Padding="5" Margin="5" CornerRadius="5" BorderThickness="1" BorderBrush="Black">
+                                    <TextBlock Foreground="#FF6F6171" FontSize="16" FontFamily="Calibri" Text="{Binding Path=Date}"/>
+                                </Border>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>

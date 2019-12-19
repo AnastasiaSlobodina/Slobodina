@@ -27,21 +27,23 @@
             </TextBlock.RenderTransform>
         </TextBlock>
         
-        <StackPanel Orientation="Vertical" DataContext="{Binding Path=Bilet}" Grid.Column="1">
-            <TextBlock Text="{Binding Path=Name}" Margin="10,54,10.2,263.4" FontSize="14" FontWeight="Bold" HorizontalAlignment="Center"/>
+        <StackPanel Orientation="Vertical" DataContext="{Binding Path=Bilet}" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center">
+            <TextBlock TextWrapping="Wrap" Text="{Binding Path=Name}" Margin="0,60,0,20" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
             <StackPanel Orientation="Horizontal">
-                <TextBlock FontSize="16" Text="Дата:"/>
-                <TextBlock FontSize="16" Text="{Binding Path=Date}"/>
+                <TextBlock FontSize="20" Text="Дата: "/>
+                <TextBlock FontSize="20" Text="{Binding Path=Date}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock FontSize="16" Text="Продолжительность:"/>
-                <TextBlock FontSize="16" Text="{Binding Path=Duration}"/>
+                <TextBlock FontSize="20" Text="Продолжительность: "/>
+                <TextBlock FontSize="20" Text="{Binding Path=Duration}"/>
             </StackPanel>
             <StackPanel Orientation="Horizontal">
-                <TextBlock FontSize="16" Text="Ряд:"/>
-                <TextBlock FontSize="16" Text="{Binding Path=Row}"/>
-                <TextBlock FontSize="16" Text="Место:"/>
-                <TextBlock FontSize="16" Text="{Binding Path=Place}"/>
+                <TextBlock FontSize="20" Text="Ряд: "/>
+                <TextBlock FontSize="20" Text="{Binding Path=Row}" FontWeight="Bold"/>
+                <TextBlock FontSize="20" Text="  Место: "/>
+                <TextBlock FontSize="20" Text="{Binding Path=Place}" FontWeight="Bold"/>
+                <TextBlock FontSize="20" Text="  Цена: "/>
+                <TextBlock FontSize="20" Text="{Binding Path=Price}" FontWeight="Bold"/>
             </StackPanel>
         </StackPanel>
         <TextBlock Grid.Column="2" Text="{Binding Path=Bilet.Code}" FontSize="20" FontWeight="Bold" Margin="-30, 0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">

@@ -85,7 +85,7 @@
                 <Image Style="{StaticResource BaseImage}" Source="/Афиша Событий;component/Картинки/Date.png"/>
                 <Label Style="{StaticResource LeftLabel}" Content="Дата"/>
             </StackPanel>
-            <DatePicker SelectedDate="{Binding Path=Date, UpdateSourceTrigger=PropertyChanged}" Width="195" Height="32" FontSize="20" FontFamily="Calibri" Foreground="#FF3A2539" Margin="29,0,25.6,0"></DatePicker>
+            <DatePicker SelectedDate="{Binding Path=Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="195" Height="32" FontSize="20" FontFamily="Calibri" Foreground="#FF3A2539" Margin="29,0,25.6,0"></DatePicker>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
             <Button Command="{Binding Path=ReportEvents}" Style="{StaticResource BaseButton}" Content="Поиск" FontFamily="Calibri" Click="Button_Click">

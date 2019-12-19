@@ -85,6 +85,7 @@ namespace Афиша_Событий.ViewModel
             }
         }
 
+        public int ID;
         private RelayCommand selectedCommand;
         public RelayCommand SelectedCommand
         {
@@ -93,8 +94,8 @@ namespace Афиша_Событий.ViewModel
                 return selectedCommand ??
                   (selectedCommand = new RelayCommand(obj => {
                       DateEventViewModel de = (DateEventViewModel)obj;
+                      ID = de.DateEvent_ID;
                       AllTickets = db.Ticket.Where(i => i.DateEvent.DateEvent_ID == de.DateEvent_ID ).ToList().Select(i => new TicketViewModel(i)).ToList();
-
                   },
 
                  //условие, при котором будет доступна команда

@@ -11,7 +11,7 @@ namespace Афиша_Событий.ViewModel
     public class Events : Base
     {
         Model1 db;
-        static DateTime d = default(DateTime);
+        static Nullable<DateTime> d= null;
         
         private List<EventViewModel> allEvents;
         public List<EventViewModel> AllEvents
@@ -30,7 +30,7 @@ namespace Афиша_Событий.ViewModel
         }
         
 
-        public void Update(int Category_ID, int City_ID, int Type_ID, DateTime date)
+        public void Update(int Category_ID, int City_ID, int Type_ID, Nullable<DateTime> date)
         {
             
             if (Type_ID == 1 && Category_ID == 1)
@@ -47,10 +47,11 @@ namespace Афиша_Событий.ViewModel
                         AllEvents = db.Event.Where(i => i.Category_FK == Category_ID && i.Place.City_FK == City_ID).ToList().Select(i => new EventViewModel(i)).Where(i => i.Type_ID.Contains(Type_ID)).ToList();
                 }
             }
-            if (date != d)
+            if (date != null)
             {
-                DateTime date2 = date.AddDays(1);
-                List<DateEvent> dateEvents = db.DateEvent.Where(i => i.Date > date.Date && i.Date < date2).ToList();
+                DateTime date1 = Convert.ToDateTime(date).Date;
+                DateTime date2 = Convert.ToDateTime(date).AddDays(1);
+                List<DateEvent> dateEvents = db.DateEvent.Where(i => i.Date > date1 && i.Date < date2).ToList();
                 List<EventViewModel> events = AllEvents;
                 AllEvents = new List<EventViewModel>();
                 foreach (DateEvent d in dateEvents)
