@@ -69,7 +69,9 @@ namespace Афиша_Событий.ViewModel
                       db.SaveChanges();
                       var bilet = new Bilet(this);
                       bilet.Show();
-                      Thread.Sleep(10000);
+                      Thread.Sleep(2000);
+                      bilet.Print();
+                      Thread.Sleep(2000);
                       bilet.Close();
                       tickets.AllTickets = db.Ticket.Where(i => i.DateEvent.DateEvent_ID == tickets.ID).ToList().Select(i => new TicketViewModel(i)).ToList();
                   },

@@ -12,8 +12,41 @@
         <Style TargetType="TextBlock" x:Key="BaseBlock">
             <Setter Property="TextWrapping" Value="Wrap"></Setter>
             <Setter Property="FontFamily" Value="Calibri"></Setter>
-            <Setter Property="Foreground" Value="#FF6F6171"></Setter>
+            <Setter Property="Foreground" Value="#FF3A2539"></Setter>
             <Setter Property="Margin" Value="5px"></Setter>
+        </Style>
+        <Style x:Key="CategoryItemStyle" TargetType="ListViewItem">
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="ListViewItem">
+                        <Border x:Name="Bd"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}"
+                                SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="true"></Condition>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="Pink"></Setter>
+                            </MultiTrigger>
+                            <MultiTrigger>
+                                <MultiTrigger.Conditions>
+                                    <Condition Property="IsSelected" Value="false"></Condition>
+                                    <Condition Property="IsMouseOver" Value="true"></Condition>
+                                </MultiTrigger.Conditions>
+                                <Setter Property="Background" TargetName="Bd" Value="#FFFFD5DB"></Setter>
+                            </MultiTrigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
         </Style>
     </Page.Resources>
 
@@ -30,14 +63,19 @@
         <StackPanel Orientation="Horizontal" Grid.Row="0" Grid.ColumnSpan="2">
             <Image Width="240" Grid.Column="0" Margin="15px" Source="{Binding Path=evm.Image}" HorizontalAlignment="Center" VerticalAlignment="Top"/>
                 <StackPanel Grid.Column="1" Grid.Row="0" Orientation="Vertical">
-                    <TextBlock Style="{StaticResource BaseBlock}" Margin="5,15,5,5" FontSize="20" Foreground="Chocolate" Text="{Binding evm.NameE}"/>
-                    <TextBlock Style="{StaticResource BaseBlock}" FontSize="14" Text="{Binding evm.Place}"/>
+                    <TextBlock Style="{StaticResource BaseBlock}" Margin="20,15,5,0" FontSize="20" Foreground="#C71585" Text="{Binding evm.NameE}"/>
+                    <TextBlock Style="{StaticResource BaseBlock}" Margin="20,10,0,0" FontSize="14" Text="{Binding evm.Place}"/>
                     <StackPanel Orientation="Horizontal">
-                        <TextBlock Style="{StaticResource BaseBlock}" FontSize="16" Text="Продолжительность:"/>
-                        <TextBlock Style="{StaticResource BaseBlock}" FontSize="16" Text="{Binding evm.Duration}"/>
+                        <TextBlock Style="{StaticResource BaseBlock}" Margin="20,10,0,0" FontSize="16" Text="Продолжительность:"/>
+                        <TextBlock Style="{StaticResource BaseBlock}" Margin="20,10,0,0" FontSize="16" Text="{Binding evm.Duration}"/>
                     </StackPanel>
-                    <TextBlock Style="{StaticResource BaseBlock}" FontSize="16" Text="Выберите дату проведения: "/>
-                    <ListView x:Name="MyListView" ItemsSource="{Binding Path=AllDate}" Background="#FFF7F2D1" SelectedItem="{Binding Path=SelectDate,Mode=TwoWay}" BorderBrush="{x:Null}">
+                    <TextBlock Style="{StaticResource BaseBlock}" FontSize="18" Margin="10,20,0,0" FontWeight="Bold" Text="Выберите дату проведения: "/>
+                    <ListView x:Name="MyListView" HorizontalAlignment="Left" ItemsSource="{Binding Path=AllDate}" Background="#FFF7F2D1" SelectedItem="{Binding Path=SelectDate,Mode=TwoWay}" BorderBrush="{x:Null}">
+                        <ListView.ItemsPanel>
+                            <ItemsPanelTemplate>
+                                <WrapPanel></WrapPanel>
+                            </ItemsPanelTemplate>
+                        </ListView.ItemsPanel>
                         <ie:Interaction.Triggers>
                             <ie:EventTrigger EventName="SelectionChanged">
                                 <ie:InvokeCommandAction Command="{Binding SelectedCommand}" CommandParameter="{Binding ElementName=MyListView, Path=SelectedItem }"></ie:InvokeCommandAction>
@@ -45,8 +83,8 @@
                         </ie:Interaction.Triggers>
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <Border Padding="5" Margin="5" CornerRadius="5" BorderThickness="1" BorderBrush="Black">
-                                    <TextBlock Foreground="#FF6F6171" FontSize="16" FontFamily="Calibri" Text="{Binding Path=Date}"/>
+                                <Border Padding="5" Margin="5" CornerRadius="5" BorderThickness="1" BorderBrush="#FF3A2539">
+                                    <TextBlock Foreground="#FF3A2539" FontSize="16" FontFamily="Calibri" Text="{Binding Path=Date}"/>
                                 </Border>
                             </DataTemplate>
                         </ListView.ItemTemplate>
@@ -54,7 +92,7 @@
                 </StackPanel>
             </StackPanel>
             <StackPanel  Margin="0,35,0,0" Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="2">
-                <ListView HorizontalAlignment="Center" Margin="45,15,45,15" ItemsSource="{Binding Path=AllTickets}" SelectedItem="{Binding Path=SelectTicket, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Background="{x:Null}" BorderBrush="{x:Null}">                    
+                <ListView HorizontalAlignment="Center" Margin="45,15,45,15" ItemsSource="{Binding Path=AllTickets}" SelectedItem="{Binding Path=SelectTicket, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" ItemContainerStyle="{StaticResource CategoryItemStyle}" Background="{x:Null}" BorderBrush="{x:Null}">                    
                     <ListView.ItemsPanel>
                         <ItemsPanelTemplate>
                             <UniformGrid Columns="10"></UniformGrid>

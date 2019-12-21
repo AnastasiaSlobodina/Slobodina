@@ -6,60 +6,62 @@
         xmlns:local="clr-namespace:Афиша_Событий.View"
         mc:Ignorable="d"
         Title="Bilet" Height="350" Width="700" WindowStartupLocation="CenterScreen" WindowStyle="None" AllowsTransparency="True" Background="{x:Null}">
-    
+
     <Grid>
-        <Grid.Background>
-            <ImageBrush ImageSource="/Афиша Событий;component/Картинки/Билет.png"/>
-        </Grid.Background>
-        <Grid.ColumnDefinitions>
-            <ColumnDefinition Width="104*"/>
-            <ColumnDefinition Width="495*"/>
-            <ColumnDefinition Width="101*"/>
-        </Grid.ColumnDefinitions>
-        <Grid.RowDefinitions>
-            <RowDefinition Height="68*"/>
-            <RowDefinition Height="32*"/>
-        </Grid.RowDefinitions>
-        <TextBlock Grid.Column="0" Grid.RowSpan="2" Text="{Binding Path=Bilet.Code}" FontSize="20" FontWeight="Bold"  Margin="0,0,-20,0" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="-90"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
-        
-        <StackPanel Orientation="Vertical" DataContext="{Binding Path=Bilet}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Top">
-            <TextBlock TextWrapping="Wrap" Text="{Binding Path=Name}" Margin="0,85,0,20" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock FontSize="20" Text="Дата: "/>
-                <TextBlock FontSize="20" Text="{Binding Path=Date}"/>
+        <Grid x:Name="grid">
+            <Grid.Background>
+                <ImageBrush ImageSource="/Афиша Событий;component/Картинки/Билет.png"/>
+            </Grid.Background>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="104*"/>
+                <ColumnDefinition Width="495*"/>
+                <ColumnDefinition Width="101*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="68*"/>
+                <RowDefinition Height="32*"/>
+            </Grid.RowDefinitions>
+            <TextBlock Grid.Column="0" Grid.RowSpan="2" Text="{Binding Path=Bilet.Code}" FontSize="20" FontWeight="Bold"  Margin="0,0,-20,0" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Right">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="-90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+
+            <StackPanel Orientation="Vertical" DataContext="{Binding Path=Bilet}" Grid.Column="1" Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center">
+                <TextBlock TextWrapping="Wrap" Text="{Binding Path=Name}" Margin="0,70,0,20" FontSize="24" FontWeight="Bold" HorizontalAlignment="Center"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="20" Text="Дата: "/>
+                    <TextBlock FontSize="20" Text="{Binding Path=Date}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="20" Text="Продолжительность: "/>
+                    <TextBlock FontSize="20" Text="{Binding Path=Duration}"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="20" Text="Ряд: "/>
+                    <TextBlock FontSize="20" Text="{Binding Path=Row}" FontWeight="Bold"/>
+                    <TextBlock FontSize="20" Text="  Место: "/>
+                    <TextBlock FontSize="20" Text="{Binding Path=Place}" FontWeight="Bold"/>
+                    <TextBlock FontSize="20" Text="  Цена: "/>
+                    <TextBlock FontSize="20" Text="{Binding Path=Price}" FontWeight="Bold"/>
+                </StackPanel>
             </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock FontSize="20" Text="Продолжительность: "/>
-                <TextBlock FontSize="20" Text="{Binding Path=Duration}"/>
-            </StackPanel>
-            <StackPanel Orientation="Horizontal">
-                <TextBlock FontSize="20" Text="Ряд: "/>
-                <TextBlock FontSize="20" Text="{Binding Path=Row}" FontWeight="Bold"/>
-                <TextBlock FontSize="20" Text="  Место: "/>
-                <TextBlock FontSize="20" Text="{Binding Path=Place}" FontWeight="Bold"/>
-                <TextBlock FontSize="20" Text="  Цена: "/>
-                <TextBlock FontSize="20" Text="{Binding Path=Price}" FontWeight="Bold"/>
-            </StackPanel>
-        </StackPanel>
-        <TextBlock TextAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" FontSize="22" FontWeight="Bold" Foreground="Red"  Text="Не забывайте пароль! Предъявите на кассе для покупки билета!"/>
-        <TextBlock Grid.Column="2" Grid.RowSpan="2" Text="{Binding Path=Bilet.Code}" FontSize="20" FontWeight="Bold" Margin="-20, 0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
-            <TextBlock.RenderTransform>
-                <TransformGroup>
-                    <ScaleTransform/>
-                    <SkewTransform/>
-                    <RotateTransform Angle="90"/>
-                    <TranslateTransform/>
-                </TransformGroup>
-            </TextBlock.RenderTransform>
-        </TextBlock>
+            <TextBlock TextAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" FontSize="22" FontWeight="Bold" Foreground="Red"  Text="Предьявите напечатанный билет на кассе для оплаты!!!"/>
+            <TextBlock Grid.Column="2" Grid.RowSpan="2" Text="{Binding Path=Bilet.Code}" FontSize="20" FontWeight="Bold" Margin="-20, 0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
+                <TextBlock.RenderTransform>
+                    <TransformGroup>
+                        <ScaleTransform/>
+                        <SkewTransform/>
+                        <RotateTransform Angle="90"/>
+                        <TranslateTransform/>
+                    </TransformGroup>
+                </TextBlock.RenderTransform>
+            </TextBlock>
+        </Grid>
     </Grid>
 </Window>

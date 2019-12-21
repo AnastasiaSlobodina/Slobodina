@@ -24,22 +24,13 @@
             <Setter Property="Margin" Value="0,5,0,0"></Setter>
             <Setter Property="FontSize" Value="23"></Setter>
             <Setter Property="FontFamily" Value="Calibri"></Setter>
-        </Style>
-        <Style TargetType="Button" x:Key="BaseButton">
-            <Setter Property="VerticalAlignment" Value="Top"></Setter>
-            <Setter Property="HorizontalAlignment" Value="Center"></Setter>
-            <Setter Property="Width" Value="195"></Setter>
-            <Setter Property="Height" Value="55"></Setter>
-            <Setter Property="Foreground" Value="#FF3A2539"></Setter>
-            <Setter Property="Margin" Value="0,30,0,0"></Setter>
-            <Setter Property="FontSize" Value="25"></Setter>
-        </Style>
+        </Style>        
         <Style TargetType="Image" x:Key="BaseImage">
             <Setter Property="VerticalAlignment" Value="Top"></Setter>
             <Setter Property="Width" Value="55"></Setter>
             <Setter Property="Height" Value="55"></Setter>
             <Setter Property="Margin" Value="0,0,0,0"></Setter>
-        </Style>
+        </Style>        
     </Window.Resources>
     <Grid>
         <Grid.RowDefinitions>
@@ -71,13 +62,13 @@
             <ComboBox ItemsSource="{Binding Path=AllCity}" DisplayMemberPath="Name" SelectedValuePath="City_ID" SelectedValue="{Binding Path=SelectedCity_ID}" Style="{StaticResource LeftComboBox}"/>
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Image Style="{StaticResource BaseImage}" Source="/Афиша Событий;component/Картинки/Category.png"/>
-                <Label Style="{StaticResource LeftLabel}" Content="Категория" ToolTip="Позволяет отобрать именно тот вид мероприятия, который вы хотите найти: концерт, спектакь, спорт и т.д."/>
+                <Label Style="{StaticResource LeftLabel}" Content="Категория"/>
             </StackPanel>
             <ComboBox ItemsSource="{Binding Path=AllCategory}" DisplayMemberPath="NameC" SelectedValuePath="Category_ID" SelectedValue="{Binding Path=SelectedCategory_ID}" Style="{StaticResource LeftComboBox}"/>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center">
                 <Image Style="{StaticResource BaseImage}" Source="/Афиша Событий;component/Картинки/Type.png"/>
-                <Label Style="{StaticResource LeftLabel}" Content="Тип" ToolTip="Позволяет отобрать мероприятия для определённого круга людей: детский, семейный, с друзьями и т.д."/>
+                <Label Style="{StaticResource LeftLabel}" Content="Тип"/>
             </StackPanel>
             <ComboBox ItemsSource="{Binding Path=AllType}" DisplayMemberPath="NameT" SelectedValuePath="Type_ID" SelectedValue="{Binding Path=SelectedType_ID}" Style="{StaticResource LeftComboBox}"/>
 
@@ -88,7 +79,7 @@
             <DatePicker SelectedDate="{Binding Path=Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="195" Height="32" FontSize="20" FontFamily="Calibri" Foreground="#FF3A2539" Margin="29,0,25.6,0"></DatePicker>
 
             <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
-            <Button Command="{Binding Path=ReportEvents}" Style="{StaticResource BaseButton}" Content="Поиск" FontFamily="Calibri" Click="Button_Click">
+            <Button Command="{Binding Path=ReportEvents}" VerticalAlignment="Bottom" Content="Поиск" FontFamily="Calibri" Click="Button_Click" Width="195" Height="55" Margin="0,30,0,0" FontSize="25" Foreground="#FF3A2539">
                 <Button.Background>
                     <SolidColorBrush Color="#FF801111" Opacity="0.2"/>
                 </Button.Background>

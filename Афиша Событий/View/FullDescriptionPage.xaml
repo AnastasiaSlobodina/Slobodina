@@ -11,7 +11,7 @@
         <Style TargetType="TextBlock" x:Key="Block">
             <Setter Property="TextWrapping" Value="Wrap"></Setter>
             <Setter Property="FontFamily" Value="Calibri"></Setter>
-            <Setter Property="Foreground" Value="#FF6F6171"></Setter>
+            <Setter Property="Foreground" Value="#FF3A2539"></Setter>
             <Setter Property="Margin" Value="5px"></Setter>
         </Style>
     </Page.Resources>
@@ -25,19 +25,19 @@
         
         <Grid Grid.Column="0">
             <StackPanel Orientation="Vertical">
-                <Image Margin="5px" Height="170" Width="130" Source="{Binding Path=evm.Image}"/>
-                <Button Content="Забронировать" Margin="25px" Height="35" FontFamily="Calibri" FontWeight="Bold" Click="Button_Click" Background="#FFEADDE7"/>
+                <Image Margin="5px" Height="190" Width="130" Source="{Binding Path=evm.Image}"/>
+                <Button Content="Забронировать" Margin="25px" Height="38" FontFamily="Calibri" FontWeight="Bold" Click="Button_Click" Foreground="#FF3A2539" Background="#FFD5BCC9"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Column="1">
             <ScrollViewer>
                 <StackPanel Orientation="Vertical">
-                    <TextBlock TextWrapping="Wrap" Margin="5px" FontSize="20" FontFamily="Calibri"  Foreground="Chocolate" Text="{Binding Path=evm.NameE}"/>
-                    <TextBlock TextWrapping="Wrap" Margin="5px" FontSize="16" FontFamily="Calibri" Foreground="#FF6F6171" Text="Даты проведения:"/>
+                    <TextBlock TextWrapping="Wrap" Margin="5px" FontSize="24" FontFamily="Calibri"  Foreground="#C71585" Text="{Binding Path=evm.NameE}"/>
+                    <TextBlock TextWrapping="Wrap" Margin="5px" FontSize="16" FontFamily="Calibri" Foreground="#FF3A2539" Text="Даты проведения:"/>
                     <ListView ItemsSource="{Binding Path=AllDate}" IsHitTestVisible="False" Background="#FFF7F2D1" BorderBrush="{x:Null}">
                         <ListView.ItemTemplate>
                             <DataTemplate>
-                                <TextBlock Foreground="#FF6F6171" FontSize="16" FontFamily="Calibri" Text="{Binding Path=Date}"/>
+                                <TextBlock Foreground="#FF3A2539" FontSize="16" FontFamily="Calibri" Text="{Binding Path=Date}"/>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
@@ -45,8 +45,8 @@
                         <TextBlock Style="{StaticResource Block}" FontSize="16" Text="Продолжительность:"/>
                         <TextBlock Style="{StaticResource Block}" FontSize="16" Text="{Binding evm.Duration}"/>
                     </StackPanel>
-                    <TextBlock TextWrapping="Wrap" Margin="5px" FontSize="14" FontFamily="Calibri" Foreground="#FF6F6171" Text="{Binding Path=evm.Place}"/>
-                    <TextBlock TextWrapping="Wrap" Margin="5px" FontSize="16" FontFamily="Calibri" Foreground="#FF6F6171" Text="{Binding Path=evm.Description}"/>
+                    <TextBlock TextWrapping="Wrap" Margin="5,5,30,5" FontSize="14" FontFamily="Calibri" Foreground="#FF3A2539" Text="{Binding Path=evm.Place}"/>
+                    <TextBlock TextWrapping="Wrap" Margin="5,5,30,5" FontSize="16" FontFamily="Calibri" Foreground="#FF3A2539" Text="{Binding Path=evm.Description}"/>
                 </StackPanel>
             </ScrollViewer>
         </Grid>

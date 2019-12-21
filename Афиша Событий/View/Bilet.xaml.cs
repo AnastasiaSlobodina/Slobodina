@@ -24,6 +24,16 @@ namespace Афиша_Событий.View
         {
             InitializeComponent();
             DataContext = tickets;
+            
+        }
+
+        public void Print()
+        {
+            PrintDialog printDialog = new PrintDialog();
+            if (printDialog.ShowDialog() == true)
+            {
+                printDialog.PrintVisual(grid, "Билет");
+            }
         }
     }
 }
