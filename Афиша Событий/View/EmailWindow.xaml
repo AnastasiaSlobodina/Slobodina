@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:Афиша_Событий.View"
         mc:Ignorable="d"
-        Title="Бронирование" SizeToContent="WidthAndHeight" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
+        Title="Бронирование" Height="170" Width="300" WindowStartupLocation="CenterScreen" AllowsTransparency="True" WindowStyle="None" Background="{x:Null}">
     <Window.Resources>
         <Style TargetType="TextBlock" x:Key="BaseBlock">
             <Setter Property="TextWrapping" Value="Wrap"></Setter>
@@ -13,21 +13,33 @@
             <Setter Property="Foreground" Value="#FF6F6171"></Setter>
             <Setter Property="Margin" Value="5px"></Setter>
         </Style>
+        <Style TargetType="Button" x:Key="BaseButton">
+            <Setter Property="Foreground" Value="#FF3A2539"></Setter>
+            <Setter Property="Margin" Value="0,0,20,10"></Setter>
+            <Setter Property="BorderBrush" Value="#FFC88058"></Setter>
+        </Style>
     </Window.Resources>
     
-    <Grid Background="#FFFAE8CA" Margin="10px">
-        <Grid.RowDefinitions>
-            <RowDefinition Height="30" />
-            <RowDefinition Height="20" />
-            <RowDefinition Height="Auto" />
-        </Grid.RowDefinitions>
+    <Grid Background="#FFFAE8CA">
+        <Border BorderBrush="#FFC88058" BorderThickness="1">
+            <StackPanel Orientation="Vertical" VerticalAlignment="Center">
+            <TextBlock Style="{StaticResource BaseBlock}" Margin="0,10,0,10" HorizontalAlignment="Center" FontSize="20">Введите e-mail:</TextBlock>
+            <TextBox Name="passwordBox" Margin="20,0,20,0" Grid.Row="1" MinWidth="250" Text="{Binding Path=Identification, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBox>
 
-        <TextBlock Style="{StaticResource BaseBlock}" HorizontalAlignment="Center" FontSize="20">Введите e-mail:</TextBlock>
-        <TextBox Name="passwordBox" Grid.Row="1" MinWidth="250" Text="{Binding Path=Identification, UpdateSourceTrigger=PropertyChanged, Mode=TwoWay}"></TextBox>
+        <WrapPanel HorizontalAlignment="Right" Margin="0,15,0,0">
+            <Button IsDefault="True" Margin="0,0,10,10" Style="{StaticResource BaseButton}" Command="{Binding Path=BookingCommand}" MinWidth="60" Content="ОК"  Click="Button_Click">
+                <Button.Background>
+                    <SolidColorBrush Color="#FF801111" Opacity="0.2"/>
+                </Button.Background>
+            </Button>
 
-        <WrapPanel Grid.Row="2" HorizontalAlignment="Right" Margin="0,15,0,0">
-            <Button IsDefault="True" Command="{Binding Path=BookingCommand}" MinWidth="60" Margin="0,0,10,0" Click="Button_Click">OK</Button>
-            <Button IsCancel="True" MinWidth="60">Отмена</Button>
+            <Button IsCancel="True" Style="{StaticResource BaseButton}" Content="Отмена" MinWidth="60">
+                <Button.Background>
+                    <SolidColorBrush Color="#FF801111" Opacity="0.2"/>
+                </Button.Background>
+            </Button>
         </WrapPanel>
+        </StackPanel>
+        </Border>
     </Grid>
 </Window>
