@@ -15,6 +15,33 @@
             <Setter Property="Foreground" Value="#FF3A2539"></Setter>
             <Setter Property="Margin" Value="5px"></Setter>
         </Style>
+        <Style x:Key="ButtonStyle" TargetType="Button">
+            <Setter Property="VerticalAlignment" Value="Bottom"></Setter>            
+            <Setter Property="Template">
+                <Setter.Value>
+                    <ControlTemplate TargetType="Button">
+                        <Border x:Name="Bd"
+                                BorderBrush="{TemplateBinding BorderBrush}"
+                                BorderThickness="{TemplateBinding BorderThickness}"
+                                Background="{TemplateBinding Background}"
+                                Padding="{TemplateBinding Padding}"
+                                SnapsToDevicePixels="true">
+                            <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                              SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                              VerticalAlignment="{TemplateBinding VerticalContentAlignment}" />
+                        </Border>
+                        <ControlTemplate.Triggers>
+                            <Trigger Property="IsMouseOver" Value="True">
+                                <Setter Property="Background" Value="#6a006a"></Setter>
+                            </Trigger>
+                            <Trigger Property="IsEnabled" Value="False">
+                                <Setter Property="Background" Value="#FFA956A9"></Setter>
+                            </Trigger>
+                        </ControlTemplate.Triggers>
+                    </ControlTemplate>
+                </Setter.Value>
+            </Setter>
+        </Style>
         <Style x:Key="CategoryItemStyle" TargetType="ListViewItem">
             <Setter Property="Template">
                 <Setter.Value>
@@ -34,14 +61,14 @@
                                 <MultiTrigger.Conditions>
                                     <Condition Property="IsSelected" Value="true"></Condition>
                                 </MultiTrigger.Conditions>
-                                <Setter Property="Background" TargetName="Bd" Value="Pink"></Setter>
+                                <Setter Property="Background" TargetName="Bd" Value="#F5A9A9"></Setter>
                             </MultiTrigger>
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
                                     <Condition Property="IsSelected" Value="false"></Condition>
                                     <Condition Property="IsMouseOver" Value="true"></Condition>
                                 </MultiTrigger.Conditions>
-                                <Setter Property="Background" TargetName="Bd" Value="#FFFFD5DB"></Setter>
+                                <Setter Property="Background" TargetName="Bd" Value="#F6CECE"></Setter>
                             </MultiTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -69,8 +96,8 @@
                         <TextBlock Style="{StaticResource BaseBlock}" Margin="20,10,0,0" FontSize="16" Text="Продолжительность:"/>
                         <TextBlock Style="{StaticResource BaseBlock}" Margin="20,10,0,0" FontSize="16" Text="{Binding evm.Duration}"/>
                     </StackPanel>
-                    <TextBlock Style="{StaticResource BaseBlock}" FontSize="18" Margin="10,20,0,0" FontWeight="Bold" Text="Выберите дату проведения: "/>
-                    <ListView x:Name="MyListView" HorizontalAlignment="Left" ItemsSource="{Binding Path=AllDate}" Background="#FFF7F2D1" SelectedItem="{Binding Path=SelectDate,Mode=TwoWay}" BorderBrush="{x:Null}">
+                    <TextBlock Style="{StaticResource BaseBlock}" FontSize="18" Margin="20,20,0,0" FontWeight="Bold" Text="Выберите дату проведения: "/>
+                    <ListView x:Name="MyListView" ItemContainerStyle="{StaticResource CategoryItemStyle}" HorizontalAlignment="Left" Margin="10,10,0,0" ItemsSource="{Binding Path=AllDate}" Background="#FFF7F2D1" SelectedItem="{Binding Path=SelectDate,Mode=TwoWay}" BorderBrush="{x:Null}">
                         <ListView.ItemsPanel>
                             <ItemsPanelTemplate>
                                 <WrapPanel></WrapPanel>
@@ -84,11 +111,23 @@
                         <ListView.ItemTemplate>
                             <DataTemplate>
                                 <Border Padding="5" Margin="5" CornerRadius="5" BorderThickness="1" BorderBrush="#FF3A2539">
-                                    <TextBlock Foreground="#FF3A2539" FontSize="16" FontFamily="Calibri" Text="{Binding Path=Date}"/>
+                                    <TextBlock Foreground="#FF3A2539" FontSize="16" TextWrapping="Wrap" FontFamily="Calibri" Text="{Binding Path=Date}"/>
                                 </Border>
                             </DataTemplate>
                         </ListView.ItemTemplate>
                     </ListView>
+                    <StackPanel Orientation="Horizontal" Margin="5px">
+                        <Image Source="/Афиша Событий;component/Картинки/Статусы/Свободно.png"/>
+                        <TextBlock Text=" - место свободно" Foreground="#FF3A2539" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5px">
+                        <Image Source="/Афиша Событий;component/Картинки/Статусы/Забронировано.png"/>
+                        <TextBlock Text=" - место забронировано" Foreground="#FF3A2539" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
+                    <StackPanel Orientation="Horizontal" Margin="5px">
+                        <Image Source="/Афиша Событий;component/Картинки/Статусы/Продано.png"/>
+                        <TextBlock Text=" - место продано" Foreground="#FF3A2539" FontSize="16" VerticalAlignment="Center"/>
+                    </StackPanel>
                 </StackPanel>
             </StackPanel>
             <StackPanel  Margin="0,35,0,0" Orientation="Vertical" Grid.Row="1" Grid.ColumnSpan="2">
@@ -125,11 +164,7 @@
                         </DataTemplate>
                     </ListView.ItemTemplate>
                 </ListView>
-                <Button Command="{Binding Path=BookingEvent}" Margin="15px" Height="55" Width="195" FontFamily="RItalic" FontStyle="Italic" FontWeight="Bold" Foreground="#FF6F6171" Content="Забронировать билет" Click="Booking_Click">
-                    <Button.Background>
-                        <SolidColorBrush Color="#FF801111" Opacity="0.2"/>
-                    </Button.Background>
-                </Button>
+                <Button Command="{Binding Path=BookingEvent}" BorderThickness="0" Margin="15px" Height="55" Width="195" FontFamily="RItalic" FontStyle="Italic" FontWeight="Bold" Foreground="#FF3A2539" Background="#FFD5BCC9" Content="Забронировать билет" Click="Booking_Click"/>
             </StackPanel>
         </Grid>
     </ScrollViewer>

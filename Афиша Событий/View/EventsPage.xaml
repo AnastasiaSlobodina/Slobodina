@@ -28,14 +28,14 @@
                                 <MultiTrigger.Conditions>
                                     <Condition Property="IsSelected" Value="true"></Condition>
                                 </MultiTrigger.Conditions>
-                                <Setter Property="Background" TargetName="Bd" Value="Pink"></Setter>
+                                <Setter Property="Background" TargetName="Bd" Value="#F5A9A9"></Setter>
                             </MultiTrigger>
                             <MultiTrigger>
                                 <MultiTrigger.Conditions>
                                     <Condition Property="IsSelected" Value="false"></Condition>
                                     <Condition Property="IsMouseOver" Value="true"></Condition>
                                 </MultiTrigger.Conditions>
-                                <Setter Property="Background" TargetName="Bd" Value="#FFFFD5DB"></Setter>
+                                <Setter Property="Background" TargetName="Bd" Value="#F6CECE"></Setter>
                             </MultiTrigger>
                         </ControlTemplate.Triggers>
                     </ControlTemplate>
@@ -43,38 +43,41 @@
             </Setter>
         </Style>        
     </Page.Resources>
-    <Grid Background="#FFF7F2D1">
-        <StackPanel>
-        <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Path=AllEvents}" SelectedItem="{Binding Path=SelectEvent,Mode=TwoWay}" Background="{x:Null}" BorderBrush="{x:Null}" MouseDoubleClick="ListView_MouseDoubleClick"  ItemContainerStyle="{StaticResource CategoryItemStyle}">
-            <ListView.ItemsPanel>
-                <ItemsPanelTemplate>
-                    <WrapPanel Orientation="Horizontal"></WrapPanel>
-                </ItemsPanelTemplate>
-            </ListView.ItemsPanel>
-            <ListView.ItemTemplate>
-                <DataTemplate>
-                    <Grid>
-                        <Grid.ColumnDefinitions>
-                            <ColumnDefinition Width="150"/>
-                            <ColumnDefinition/>
-                        </Grid.ColumnDefinitions>
-                        <Grid.ToolTip>
-                            <ToolTip Background="#FFF7F2D1">
-                                <ListView ItemsSource="{Binding Path=AllDates}" Background="#FFF7F2D1" BorderBrush="{x:Null}">
-                                    <ListView.ItemTemplate>
-                                        <DataTemplate>
-                                                <TextBlock Foreground="#FF5A2121" FontWeight="Bold" Text="{Binding Path=Date}"/>                                                                                       
-                                        </DataTemplate>
-                                    </ListView.ItemTemplate>
-                                </ListView>                                
-                            </ToolTip>
-                        </Grid.ToolTip>
-                        <Image Margin="5px" Height="200" Width="200" Source="{Binding Path=Image}" Grid.Column="0"/>                       
-                    </Grid>
-                </DataTemplate>
-            </ListView.ItemTemplate>
-        </ListView>
-            <TextBlock Text="** для просмотра дат проведения наведите курсор на нужную афишу" FontSize="14" FontFamily="Calibri" FontStyle="Italic" HorizontalAlignment="Left" VerticalAlignment="Stretch"/>
-        </StackPanel>
-    </Grid>
+    <ScrollViewer>
+        <Grid Background="#FFF7F2D1">
+            <StackPanel>
+                <ListView ScrollViewer.HorizontalScrollBarVisibility="Disabled" ItemsSource="{Binding Path=AllEvents}" SelectedItem="{Binding Path=SelectEvent,Mode=TwoWay}" Background="{x:Null}" BorderBrush="{x:Null}" MouseDoubleClick="ListView_MouseDoubleClick"  ItemContainerStyle="{StaticResource CategoryItemStyle}">
+                    <ListView.ItemsPanel>
+                        <ItemsPanelTemplate>
+                            <WrapPanel Orientation="Horizontal"></WrapPanel>
+                        </ItemsPanelTemplate>
+                    </ListView.ItemsPanel>
+                    <ListView.ItemTemplate>
+                        <DataTemplate>
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="150"/>
+                                    <ColumnDefinition/>
+                                </Grid.ColumnDefinitions>
+                                <Grid.ToolTip>
+                                    <ToolTip Background="#FFF7F2D1">
+                                        <ListView ItemsSource="{Binding Path=AllDates}" Background="#FFF7F2D1" BorderBrush="{x:Null}">
+                                            <ListView.ItemTemplate>
+                                                <DataTemplate>
+                                                    <TextBlock Foreground="#FF5A2121" FontWeight="Bold" Text="{Binding Path=Date}"/>
+                                                </DataTemplate>
+                                            </ListView.ItemTemplate>
+                                        </ListView>
+                                    </ToolTip>
+                                </Grid.ToolTip>
+                                <Image Margin="5px" Height="200" Width="200" Source="{Binding Path=Image}" Grid.Column="0"/>
+                            </Grid>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+                </ListView>
+                <TextBlock VerticalAlignment="Bottom" TextWrapping="Wrap" Text="** для просмотра дат проведения наведите курсор на нужную афишу" FontSize="14" FontFamily="Calibri" FontStyle="Italic" HorizontalAlignment="Left"/>
+                <TextBlock VerticalAlignment="Bottom" TextWrapping="Wrap" Text="*** для просмотра подробной информации о мероприятии нажмите на нужную афишу двойным кликом" FontSize="14" FontFamily="Calibri" FontStyle="Italic" HorizontalAlignment="Left"/>
+            </StackPanel>
+        </Grid>
+    </ScrollViewer>
 </Page>

@@ -26,7 +26,7 @@
         <Grid Grid.Column="0">
             <StackPanel Orientation="Vertical">
                 <Image Margin="5px" Height="190" Width="130" Source="{Binding Path=evm.Image}"/>
-                <Button Content="Забронировать" Margin="25px" Height="38" FontFamily="Calibri" FontWeight="Bold" Click="Button_Click" Foreground="#FF3A2539" Background="#FFD5BCC9"/>
+                <Button Content="Забронировать" BorderThickness="0"  Margin="25px" Height="38" FontFamily="Calibri" FontWeight="Bold" Click="Button_Click" Foreground="#FF3A2539" Background="#FFD5BCC9"/>
             </StackPanel>
         </Grid>
         <Grid Grid.Column="1">

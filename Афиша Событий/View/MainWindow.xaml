@@ -78,15 +78,13 @@
             </StackPanel>
             <DatePicker SelectedDate="{Binding Path=Date, Mode=TwoWay, UpdateSourceTrigger=PropertyChanged}" Width="195" Height="32" FontSize="20" FontFamily="Calibri" Foreground="#FF3A2539" Margin="29,0,25.6,0"></DatePicker>
 
-            <StackPanel Orientation="Horizontal" HorizontalAlignment="Center"/>
-            <Button Command="{Binding Path=ReportEvents}" VerticalAlignment="Bottom" Content="Поиск" FontFamily="Calibri" Click="Button_Click" Width="195" Height="55" Margin="0,30,0,0" FontSize="25" Foreground="#FF3A2539">
+            <Button BorderThickness="0" Command="{Binding Path=ReportEvents}" VerticalAlignment="Bottom" Content="Поиск" FontFamily="Calibri" Click="Button_Click" Width="195" Height="55" Margin="0,30,0,0" FontSize="25" Foreground="#FF3A2539">
                 <Button.Background>
                     <SolidColorBrush Color="#FF801111" Opacity="0.2"/>
                 </Button.Background>
             </Button>
         </StackPanel>
-        <Frame x:Name="Page" Grid.Row="1" Grid.Column="1" >
-            
+        <Frame x:Name="Page" Grid.Row="1" Grid.Column="1">            
         </Frame>
 
     </Grid>

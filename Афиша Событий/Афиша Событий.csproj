@@ -109,10 +109,6 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\Booking36565260Page.xaml">
-      <SubType>Designer</SubType>
-      <Generator>MSBuild:Compile</Generator>
-    </Page>
     <Page Include="View\EmailWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -140,9 +136,6 @@
     <Compile Include="ViewModel\FullDescriptionEvents.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\Tickets.cs" />
-    <Compile Include="View\Booking36565260Page.xaml.cs">
-      <DependentUpon>Booking36565260Page.xaml</DependentUpon>
-    </Compile>
     <Compile Include="View\EventsPage.xaml.cs">
       <DependentUpon>EventsPage.xaml</DependentUpon>
     </Compile>
@@ -248,6 +241,9 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Картинки\Билет.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Билет.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -31,8 +31,7 @@ namespace Афиша_Событий.View
             InitializeComponent();
             id = Event_ID;
             page = pg;
-            ev = new FullDescriptionEvents(Event_ID);
-            DataContext = ev;
+            DataContext = new FullDescriptionEvents(Event_ID); 
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
