@@ -51,7 +51,7 @@
                     <TextBlock FontSize="20" Text="{Binding Path=Price}" FontWeight="Bold"/>
                 </StackPanel>
             </StackPanel>
-            <TextBlock TextAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" FontSize="22" FontWeight="Bold" Foreground="Red"  Text="Предьявите напечатанный билет на кассе для оплаты!!!"/>
+            <TextBlock TextAlignment="Center" HorizontalAlignment="Center" Grid.Column="1" Grid.Row="1" TextWrapping="Wrap" FontSize="22" FontWeight="Bold" Foreground="Red"  Text="Предьявите напечатанный билет на кассе!!!"/>
             <TextBlock Grid.Column="2" Grid.RowSpan="2" Text="{Binding Path=Bilet.Code}" FontSize="20" FontWeight="Bold" Margin="-20, 0,0,0" VerticalAlignment="Center" RenderTransformOrigin="0.5,0.5" HorizontalAlignment="Left">
                 <TextBlock.RenderTransform>
                     <TransformGroup>

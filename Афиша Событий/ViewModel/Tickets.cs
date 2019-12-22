@@ -37,11 +37,6 @@ namespace Афиша_Событий.ViewModel
             Event ev = db.Event.Find(Event_ID);
             evm = new EventViewModel(ev);
             AllDate = db.DateEvent.Where(i => i.Event_FK == Event_ID).ToList().Select(i => new DateEventViewModel(i)).ToList();
-            //    if (SelectDate != null)
-            //        AllTickets = db.Ticket.Where(i => i.DateEvent.DateEvent_ID == 1).ToList().Select(i => new TicketViewModel(i)).ToList();
-
-            //    AllTickets = db.Ticket.Where(i => i.DateEvent.DateEvent_ID == 1).ToList().Select(i => new TicketViewModel(i)).ToList();
-            //}
         }
 
         private DateEventViewModel selectDate;
